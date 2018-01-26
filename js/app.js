@@ -1,4 +1,5 @@
 var blackList;
+var animeList;
 var timeoutms = 0;
 var requestCount = 0;
 
@@ -28,6 +29,16 @@ function showAnime(anime) {
   $('#pickRandomAnimeBtn').show();
 }
 
+function getRandomLocalAnime() {
+  var index = 0;
+
+  do {
+    index = Math.floor(Math.random() * animeList.length);
+  }while(index < 0 && index > animeList.length);
+
+  return animeList[index];
+}
+
 function getRandomAnime() {
   var id = getRandomId();
 
@@ -43,6 +54,8 @@ function getRandomAnime() {
         showAnime(data);
         timeoutms = 0;
         requestCount = 0;
+        animeList.push(data);
+        localStorage.setItem("animelist", JSON.stringify(animeList));
       } else {
         blackList.push(id);
         localStorage.setItem("blacklist", JSON.stringify(blackList));
@@ -51,7 +64,10 @@ function getRandomAnime() {
     },
     error: function(response) {
       if(response.status == 429) {
-        timeoutms += 1000;
+        var data = getRandomLocalAnime();
+        showAnime(data);
+        console.log("Anime local escogido");
+        return false;
       }
 
       if(response.status == 404) {
@@ -59,10 +75,6 @@ function getRandomAnime() {
 
         if(requestCount >= 15) {
           timeoutms += 1000;
-
-          if(timeoutms >= 30000) {
-            timeoutms = 0;
-          }
         }
       }
 
@@ -74,12 +86,19 @@ function getRandomAnime() {
 }
 
 $(document).ready(function(){
-  var localData = localStorage.getItem("blacklist");
+  var localBlackListData = localStorage.getItem("blacklist");
+  var localAnimeData = localStorage.getItem("animelist");
 
-  if(localData != null) {
-    blackList = JSON.parse(localData);
+  if(localBlackListData != null) {
+    blackList = JSON.parse(localBlackListData);
   } else {
     blackList = [];
+  }
+
+  if(localAnimeData != null) {
+    animeList = JSON.parse(localAnimeData);
+  } else {
+    animeList = [];
   }
 
   $('#loading-container').hide();
