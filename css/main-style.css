@@ -21,27 +21,29 @@ header {
   margin-bottom: 20px;
 }
 
-.flex-container {
+.anime-container {
   margin: 0 auto;
   display: flex;
   justify-content: center;
   width: 900px;
 }
 
-#anime-container > * {
-  margin: 15px;
+.anime-container > img {
+  flex-basis: 225px;
 }
 
-.anime-information > * {
-  width: 600px;
+.anime-information {
+  margin-left: 15px;
+}
+
+.anime-information > section {
   margin: 15px 0px;
 }
-/*
-#anime-img {
-  width: 225px;
-  height: 318px;
+
+.anime-information > section > h4 {
+  margin-bottom: 5px;
 }
-*/
+
 button {
   background-color: rgb(45, 130, 84);
   padding: 15px;
