@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Anime Picker</title>
   <link rel="stylesheet" href="css/main-style.css" />
   <script src="js/jquery-3.3.1.min.js"></script>
@@ -13,25 +14,32 @@
   <header>
     <h1>Random Anime Picker</h1>
   </header>
-  <div id="loading-container" class="flex-container">
+  <div id="loading-container">
     <img src="img/loading.gif" alt="loading_gif" />
   </div>
-  <div id="anime-container" class="flex-container">
+  <div class="anime-container">
     <img id="anime-img" src="#" alt="anime-label" />
     <div class="anime-information">
       <h1 id="anime-title"></h1>
       <h4 id="anime-title-jp"></h4>
-      <div>
-        <h4></h4>
-      </div>
-      <div>
+      <ul class="stats">
+        <li><strong>Episodes:</strong>&nbsp;<span id="episodes"></span></li>
+        <li><strong>Duration:</strong>&nbsp;<span id="duration"></span></li>
+        <li><strong>Premiered:</strong>&nbsp;<span id="premiered"></span></li>
+        <li><strong>Status:</strong>&nbsp;<span id="status"></span></li>
+        <li><strong>Score:</strong>&nbsp;<span id="score"></span></li>
+        <li><strong>Genres:</strong>&nbsp;<span id="genre"></span></li>
+      </ul>
+      <section>
         <h4>Synopsis:</h4>
         <p id="synopsis"></p>
-      </div>
-
+      </section>
     </div>
   </div>
-  <button id="pickRandomAnimeBtn">Choose a random anime</button>
+  <div class="buttons-container">
+    <button class="btn" id="pickRandomAnimeBtn">Choose a random anime</button>
+    <a class="btn" id="myanimelistlink" href="#" target="_blank">View on MyAnimeList</a>
+  </div>
 </body>
 
 </html>
