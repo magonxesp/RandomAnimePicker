@@ -40,7 +40,7 @@ function showAnime(anime) {
   _animeImg.attr("src", anime.image_url);
   _animeTitle.text(anime.title);
   _animeTitleJp.text(anime.title_japanese);
-  _synopsis.text(anime.synopsis);
+  _synopsis.html(anime.synopsis);
   _episodes.text(anime.episodes);
   _duration.text(anime.duration);
   _premiered.text(anime.premiered);
