@@ -99,8 +99,8 @@ function inAnimeList(id) {
   return false;
 }
 
-function toBlackList(animeData) {
-  blackList.push(animeData.mal_id);
+function toBlackList(animeId) {
+  blackList.push(animeId);
   localStorage.setItem("blacklist", JSON.stringify(blackList));
 }
 
@@ -109,23 +109,12 @@ function catchAnime(animeData) {
     saveAnime(animeData);
     showAnime(animeData);
   } else {
-    toBlackList(animeData);
+    toBlackList(animeData.mal_id);
     getRandomAnime();
   }
 }
 
-function getRandomAnime() {
-  var animeData;
-  var id = 0;
-
-  showLoadAnimation();
-  id = getRandomId();
-
-  if((animeData = inAnimeList(id)) != false) {
-    showAnime(animeData);
-    return false;
-  }
-  
+function fetchAnime(animeId) {
   var ajax = new XMLHttpRequest();
 
   ajax.onreadystatechange = function() {
@@ -133,6 +122,8 @@ function getRandomAnime() {
       catchAnime(this.response);
     }
     else if(this.status == 404 && this.readyState == 4) {
+      toBlackList(animeId);
+
       if(requestCount > 10) {
         if(getRandomLocalAnime()) {
           return false;
@@ -151,8 +142,21 @@ function getRandomAnime() {
   }
 
   ajax.responseType = "json";
-  ajax.open("GET", "https://api.jikan.me/anime/" + id, true);
+  ajax.open("GET", "https://api.jikan.me/anime/" + animeId, true);
   ajax.send();
+}
+
+function getRandomAnime() {
+  showLoadAnimation();
+  var id = getRandomId();
+  var animeData;
+
+  if((animeData = inAnimeList(id)) != false) {
+    showAnime(animeData);
+    return false;
+  }
+
+  fetchAnime(id);
 }
 
 window.onload = function() {
