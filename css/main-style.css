@@ -67,6 +67,10 @@ header {
   align-items: flex-start;
 }
 
+button {
+  cursor: pointer;
+}
+
 .btn {
   padding: 15px;
   color: white;
