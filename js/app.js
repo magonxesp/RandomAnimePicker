@@ -139,7 +139,7 @@ function fetchAnime(animeId) {
     else if(this.status == 429 && this.readyState == 4) {
       getRandomLocalAnime();
     }
-  }
+  };
 
   ajax.responseType = "json";
   ajax.open("GET", "https://api.jikan.me/anime/" + animeId, true);
@@ -174,7 +174,7 @@ window.onload = function() {
   } else {
     animeList = [];
   }
-}
+};
 
 var _pickRandomAnimeButton = document.getElementById("pickRandomAnimeBtn");
 
