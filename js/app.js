@@ -142,7 +142,7 @@ function fetchAnime(animeId) {
   };
 
   ajax.responseType = "json";
-  ajax.open("GET", "https://api.jikan.me/anime/" + animeId, true);
+  ajax.open("GET", "https://api.jikan.moe/anime/" + animeId, true);
   ajax.send();
 }
 
