@@ -38,9 +38,7 @@ class AnimeService {
             let year = this.getRandomInt(now.getFullYear() - 10, now.getFullYear());
             let season = this.randomSeason();
             let response = await jikanjs.loadSeason(year, season);
-            console.log(response);
             let anime = response['anime'][this.getRandomInt(0, response['anime'].length - 1)];
-            console.log(anime);
             return await this.getAnime(anime['mal_id']);
         } catch (exception) {
             console.log(exception);

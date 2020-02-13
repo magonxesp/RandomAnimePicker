@@ -26,7 +26,6 @@ class Anime extends React.Component {
     }
 
     anime(data) {
-        console.log(data);
         return (
             <div className="anime">
                 <img className="anime-img" src={data['image_url'] || ''} alt="anime-label"/>
