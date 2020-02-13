@@ -24,13 +24,24 @@ class AnimeService {
         return this.#season[this.getRandomInt(0, this.#season.length - 1)]
     }
 
+    async getAnime(id) {
+        try {
+            return await jikanjs.loadAnime(id);
+        } catch (exception) {
+            return null;
+        }
+    }
+
     async random() {
         try {
             let now = new Date();
-            let year = this.getRandomInt(2000, now.getFullYear());
+            let year = this.getRandomInt(now.getFullYear() - 10, now.getFullYear());
             let season = this.randomSeason();
             let response = await jikanjs.loadSeason(year, season);
-            return response['anime'][this.getRandomInt(0, response.anime.length - 1)];
+            console.log(response);
+            let anime = response['anime'][this.getRandomInt(0, response['anime'].length - 1)];
+            console.log(anime);
+            return await this.getAnime(anime['mal_id']);
         } catch (exception) {
             console.log(exception);
             return null;
