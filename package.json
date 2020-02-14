@@ -1,5 +1,6 @@
 {
   "name": "randomanimepicker",
+  "homepage" : "http://magonxesp.github.io/RandomAnimePicker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
