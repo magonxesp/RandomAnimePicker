@@ -21,7 +21,7 @@ class App extends React.Component {
     let bodyComponent;
 
     if (!this.state.anime) {
-      bodyComponent = <button className="btn" onClick={() => this.start()}>Choose a random anime</button>
+      bodyComponent = <button className="btn btn-primary" onClick={() => this.start()}>Choose a random anime</button>
     } else {
       bodyComponent = this.state.anime
     }
@@ -31,7 +31,9 @@ class App extends React.Component {
             <header>
               <h1>Random Anime Picker</h1>
             </header>
-            {bodyComponent}
+            <div className="App-container">
+              {bodyComponent}
+            </div>
         </div>
     );
   }

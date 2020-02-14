@@ -5,7 +5,7 @@ import './Loading.scss';
 class Loading extends React.Component {
     render() {
         return (
-            <div className="loading-container">
+            <div className="Loading">
                 <img src={gif} alt="loading_gif" />
             </div>
         )

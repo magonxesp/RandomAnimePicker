@@ -1,0 +1,73 @@
+.Anime {
+  .Anime-container {
+    margin-bottom: 20px;
+
+    .Anime-fields {
+      display: flex;
+      margin-bottom: 20px;
+
+      .Anime-img {
+        max-width: 300px;
+
+        img {
+          width: 100%;
+        }
+
+        @media (max-width: 900px) {
+          margin-bottom: 30px;
+        }
+      }
+
+      .Anime-information {
+        margin-left: 20px;
+        max-width: 650px;
+
+        ul.stats {
+          list-style: none;
+
+          li {
+            padding: 5px 0;
+          }
+        }
+
+        @media (max-width: 650px) {
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+
+      .synopsis-section {
+        padding: 10px 0;
+      }
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+
+      .btn {
+        margin-left: 10px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      @media (max-width: 600px) {
+        flex-direction: column;
+        margin: 0 10px 10px 10px;
+
+        .btn {
+          margin-left: 0 !important;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
