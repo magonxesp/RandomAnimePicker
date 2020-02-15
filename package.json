@@ -1,10 +1,10 @@
 {
   "name": "randomanimepicker",
-  "homepage" : "http://magonxesp.github.io/RandomAnimePicker",
+  "homepage": "http://magonxesp.github.io/RandomAnimePicker/",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -17,6 +17,7 @@
     "react-scripts": "3.3.1"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
