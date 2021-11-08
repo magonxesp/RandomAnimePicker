@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Anime from "./components/anime/Anime";
+import Anime from "./components/anime/anime-detail";
 
 class App extends React.Component {
 
