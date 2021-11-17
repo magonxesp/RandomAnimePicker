@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+.Loading[data-v-21e3776f] {
+  max-width: 500px;
+}
+.Loading img[data-v-21e3776f] {
+  width: 100%;
+}
+.Anime-fields[data-v-a9df1dd6] {
+  display: flex;
+  margin-bottom: 20px;
+}
+.Anime-fields .Anime-img[data-v-a9df1dd6] {
+  max-width: 300px;
+}
+.Anime-fields .Anime-img img[data-v-a9df1dd6] {
+  width: 100%;
+}
+@media (max-width: 900px) {
+.Anime-fields .Anime-img[data-v-a9df1dd6] {
+    margin-bottom: 30px;
+}
+}
+.Anime-fields .Anime-information[data-v-a9df1dd6] {
+  margin-left: 20px;
+  max-width: 650px;
+}
+.Anime-fields .Anime-information ul.stats[data-v-a9df1dd6] {
+  list-style: none;
+}
+.Anime-fields .Anime-information ul.stats li[data-v-a9df1dd6] {
+  padding: 5px 0;
+}
+@media (max-width: 650px) {
+.Anime-fields .Anime-information[data-v-a9df1dd6] {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+}
+.Anime-fields .synopsis-section[data-v-a9df1dd6] {
+  padding: 10px 0;
+}
+@media (max-width: 900px) {
+.Anime-fields[data-v-a9df1dd6] {
+    flex-direction: column;
+    align-items: center;
+}
+}
+.Anime-container[data-v-3c08f0b9] {
+  margin-bottom: 20px;
+}
+.Anime-container .buttons-container[data-v-3c08f0b9] {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.Anime-container .buttons-container .btn[data-v-3c08f0b9] {
+  margin-left: 10px;
+}
+.Anime-container .buttons-container .btn[data-v-3c08f0b9]:first-child {
+  margin-left: 0;
+}
+@media (max-width: 600px) {
+.Anime-container .buttons-container[data-v-3c08f0b9] {
+    flex-direction: column;
+    margin: 0 10px 10px 10px;
+}
+.Anime-container .buttons-container .btn[data-v-3c08f0b9] {
+    margin-left: 0 !important;
+    margin-bottom: 15px;
+}
+}
+.App[data-v-3e3211d3] {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+.App header[data-v-3e3211d3] {
+  padding: 15px;
+}
+.App header h1[data-v-3e3211d3] {
+  margin: 0;
+}
+.App .App-container[data-v-3e3211d3] {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 900px) {
+.App .App-container[data-v-3e3211d3] {
+    margin-top: 50px;
+}
+}
+/* Global styles */
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #354359;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+h2, h3, h4, h5, h6 {
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 15px;
+  color: white;
+  border-radius: 5px;
+  font-size: 24px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+.btn.btn-primary {
+  background-color: #2d8254;
+  box-shadow: 0 5px 0 #246642;
+}
+.btn.btn-secondary {
+  background-color: #3588c4;
+  box-shadow: 0 5px 0 #286591;
+}
+
+/*# sourceMappingURL=style.css.map*/
