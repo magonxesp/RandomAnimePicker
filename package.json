@@ -11,7 +11,8 @@
     "build": "webpack build --mode=development",
     "build:prod": "webpack build --mode=production",
     "watch": "webpack watch",
-    "serve": "webpack-dev-server --open"
+    "serve": "webpack-dev-server --open",
+    "deploy": "npm run build:prod && gh-pages -d dist"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
