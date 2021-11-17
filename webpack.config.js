@@ -1,19 +1,34 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// relative public path, empty string reference on the document root of the server
+const publicPath = '';
+const outputPath = path.resolve(__dirname, 'dist');
+const sourcePath = path.resolve(__dirname, 'src');
 
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, 'src/index.js'),
+    devServer: {
+        static: {
+            directory: outputPath
+        },
+        port: 9000
+    },
+    entry: path.join(sourcePath, 'index.js'),
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: outputPath,
         filename: 'js/bundle.js',
     },
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'css/style.css',
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.join(sourcePath, 'index.html')
+        })
     ],
     devtool: 'source-map',
     resolve: {
@@ -78,7 +93,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     outputPath: 'assets/images',
-                    publicPath: 'dist/assets/images',
+                    publicPath: path.join(publicPath, 'assets/images'),
                     useRelativePaths: true
                 }
             },
@@ -87,7 +102,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     outputPath: 'assets/fonts',
-                    publicPath: 'dist/assets/fonts',
+                    publicPath: path.join(publicPath, 'assets/fonts'),
                     useRelativePaths: true
                 }
             }

@@ -8,11 +8,12 @@
 
     <title>Random anime picker</title>
 
-    <link href="dist/css/style.css" type="text/css" rel="stylesheet" />
+    <%= htmlWebpackPlugin.tags.headTags %>
 </head>
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="dist/js/bundle.js"></script>
+
+    <%= htmlWebpackPlugin.tags.bodyTags %>
 </body>
 </html>
