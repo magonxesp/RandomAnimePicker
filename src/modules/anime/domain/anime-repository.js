@@ -1,3 +1,6 @@
+/**
+ * @interface
+ */
 export default class AnimeRepository {
 
     /**
@@ -14,6 +17,15 @@ export default class AnimeRepository {
      *
      * @returns {Promise<Anime>}
      */
-    async find(id) {}
+    async find(id) { }
+
+    /**
+     * Save Anime
+     *
+     * @param {Anime} anime
+     *
+     * @returns {Promise<void>}
+     */
+    async save(anime) { }
 
 }

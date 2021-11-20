@@ -3,6 +3,7 @@ export default class Anime {
     /**
      * Anime constructor.
      *
+     * @param {AnimeId} id
      * @param {AnimeTitle} title
      * @param {AnimeEpisodes} episodes
      * @param {AnimeDuration} duration
@@ -16,6 +17,7 @@ export default class Anime {
      * @param {AnimeUrl} url
      */
     constructor(
+        id,
         title,
         episodes,
         duration,
@@ -28,6 +30,7 @@ export default class Anime {
         image,
         url
     ) {
+        this.id = id;
         this.title = title;
         this.episodes = episodes;
         this.duration = duration;

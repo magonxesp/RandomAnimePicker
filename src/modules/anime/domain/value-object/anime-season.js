@@ -1,4 +1,4 @@
-import Random from "../../shared/domain/random";
+import Random from "../../../shared/domain/random";
 
 export const AnimeSeason = {
     SUMMER: 'summer',

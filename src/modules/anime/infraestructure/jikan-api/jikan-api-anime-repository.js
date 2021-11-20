@@ -1,8 +1,8 @@
 import AnimeRepository from "../../domain/anime-repository";
 import Random from "../../../shared/domain/random";
 import jikanjs from "jikanjs";
-import { randomSeason } from "../../domain/anime-season";
-import AnimeId from "../../domain/anime-id";
+import { randomSeason } from "../../domain/value-object/anime-season";
+import AnimeId from "../../../shared/anime/anime-id";
 import JikanApiAnimeResponse from "./jikan-api-anime-response";
 
 export default class JikanApiAnimeRepository extends AnimeRepository {
@@ -36,5 +36,14 @@ export default class JikanApiAnimeRepository extends AnimeRepository {
 
         return animeResponse.toAnimeEntity();
     }
+
+    /**
+     * Save Anime
+     *
+     * @param {Anime} anime
+     *
+     * @returns {Promise<void>}
+     */
+    async save(anime) { }
 
 }

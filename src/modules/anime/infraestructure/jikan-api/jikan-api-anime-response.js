@@ -1,17 +1,18 @@
 import Anime from "../../domain/anime";
-import AnimeTitle from "../../domain/anime-title";
-import AnimeTitleEnglish from "../../domain/anime-title-english";
-import AnimeTitleJapanese from "../../domain/anime-title-japanese";
-import AnimeEpisodes from "../../domain/anime-episodes";
-import AnimeDuration from "../../domain/anime-duration";
-import AnimePremiered from "../../domain/anime-premiered";
-import AnimeStatus from "../../domain/anime-status";
-import AnimeScore from "../../domain/anime-score";
-import AnimeGenres from "../../domain/anime-genres";
-import AnimeRating from "../../domain/anime-rating";
-import AnimeSynopsis from "../../domain/anime-synopsis";
-import AnimeImage from "../../domain/anime-image";
-import AnimeUrl from "../../domain/anime-url";
+import AnimeTitle from "../../domain/value-object/anime-title";
+import AnimeTitleEnglish from "../../domain/value-object/anime-title-english";
+import AnimeTitleJapanese from "../../domain/value-object/anime-title-japanese";
+import AnimeEpisodes from "../../domain/value-object/anime-episodes";
+import AnimeDuration from "../../domain/value-object/anime-duration";
+import AnimePremiered from "../../domain/value-object/anime-premiered";
+import AnimeStatus from "../../domain/value-object/anime-status";
+import AnimeScore from "../../domain/value-object/anime-score";
+import AnimeGenres from "../../domain/value-object/anime-genres";
+import AnimeRating from "../../domain/value-object/anime-rating";
+import AnimeSynopsis from "../../domain/value-object/anime-synopsis";
+import AnimeImage from "../../domain/value-object/anime-image";
+import AnimeUrl from "../../domain/value-object/anime-url";
+import AnimeId from "../../../shared/anime/anime-id";
 
 export default class JikanApiAnimeResponse {
 
@@ -27,6 +28,7 @@ export default class JikanApiAnimeResponse {
 
     toAnimeEntity() {
         return new Anime(
+            new AnimeId(this.response.mal_id),
             new AnimeTitle(
                 new AnimeTitleEnglish(this.response.title),
                 new AnimeTitleJapanese(this.response.title_japanese)
