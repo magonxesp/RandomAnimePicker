@@ -1,5 +1,5 @@
-import NumberValueObject from "../domain/value-object/number-value-object";
+import StringValueObject from "../domain/value-object/string-value-object";
 
-export default class AnimeId extends NumberValueObject {
+export default class AnimeId extends StringValueObject {
 
 }

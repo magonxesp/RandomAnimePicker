@@ -105,6 +105,15 @@ module.exports = {
                     publicPath: path.join(publicPath, 'assets/fonts'),
                     useRelativePaths: true
                 }
+            },
+            {
+                test: /\.(svg)$/i,
+                loader: 'file-loader',
+                options: {
+                    outputPath: 'assets/svg',
+                    publicPath: path.join(publicPath, 'assets/svg'),
+                    useRelativePaths: true
+                }
             }
         ]
     }

@@ -7,6 +7,8 @@ export default class AnimeRepository {
      * Return random Anime id
      *
      * @returns {Promise<Anime>}
+     *
+     * @abstract
      */
     async random() { }
 
@@ -16,6 +18,8 @@ export default class AnimeRepository {
      * @param {AnimeId} id
      *
      * @returns {Promise<Anime>}
+     *
+     * @abstract
      */
     async find(id) { }
 
@@ -25,6 +29,8 @@ export default class AnimeRepository {
      * @param {Anime} anime
      *
      * @returns {Promise<void>}
+     *
+     * @abstract
      */
     async save(anime) { }
 

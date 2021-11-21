@@ -1,5 +1,5 @@
 /* Global styles */
-
+@import "variables";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
@@ -20,8 +20,9 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(53, 67, 89);
+  background-color: $background-primary;
   padding-bottom: 100px;
+  overflow-x: hidden;
 }
 
 code {
@@ -52,12 +53,21 @@ h2, h3, h4, h5, h6 {
   text-align: center;
 
   &.btn-primary {
-    background-color: rgb(45, 130, 84);
-    box-shadow: 0 5px 0 rgb(36, 102, 66);
+    background-color: $button-primary;
+    box-shadow: $button-primary-shadow;
   }
 
   &.btn-secondary {
-    background-color: rgb(53, 136, 196);
-    box-shadow: 0 5px 0 rgb(40, 101, 145);
+    background-color: $button-secondary;
+    box-shadow: $button-secondary-shadow;
+  }
+}
+
+a.icon-btn {
+  color: #FFFFFF;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
   }
 }

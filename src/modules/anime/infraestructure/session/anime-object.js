@@ -1,4 +1,5 @@
 import Anime from "../../domain/anime";
+import AnimeId from "../../../shared/anime/anime-id";
 import AnimeTitle from "../../domain/value-object/anime-title";
 import AnimeTitleEnglish from "../../domain/value-object/anime-title-english";
 import AnimeTitleJapanese from "../../domain/value-object/anime-title-japanese";
@@ -12,38 +13,27 @@ import AnimeRating from "../../domain/value-object/anime-rating";
 import AnimeSynopsis from "../../domain/value-object/anime-synopsis";
 import AnimeImage from "../../domain/value-object/anime-image";
 import AnimeUrl from "../../domain/value-object/anime-url";
-import AnimeId from "../../../shared/anime/anime-id";
 
-export default class JikanApiAnimeResponse {
+export default class AnimeObject {
 
-    constructor(response) {
-        this.response = response;
-    }
-
-    genresNames() {
-        return this.response.genres.map((genre) => {
-            return genre.name;
-        });
-    }
-
-    toAnimeEntity() {
+    static fromObject(object) {
         return new Anime(
-            new AnimeId(this.response.mal_id),
+            new AnimeId(object.id.value),
             new AnimeTitle(
-                new AnimeTitleEnglish(this.response.title),
-                new AnimeTitleJapanese(this.response.title_japanese)
+                new AnimeTitleEnglish(object.title.english.value),
+                new AnimeTitleJapanese(object.title.japanese.value)
             ),
-            new AnimeEpisodes(this.response.episodes),
-            new AnimeDuration(this.response.duration),
-            new AnimePremiered(this.response.premiered),
-            new AnimeStatus(this.response.status),
-            new AnimeScore(this.response.score),
-            new AnimeGenres(this.genresNames()),
-            new AnimeRating(this.response.rating),
-            new AnimeSynopsis(this.response.synopsis),
-            new AnimeImage(this.response.image_url),
-            new AnimeUrl(this.response.url)
+            new AnimeEpisodes(object.episodes.value),
+            new AnimeDuration(object.duration.value),
+            new AnimePremiered(object.premiered.value),
+            new AnimeStatus(object.status.value),
+            new AnimeScore(object.score.value),
+            new AnimeGenres(object.genres.values),
+            new AnimeRating(object.rating.value),
+            new AnimeSynopsis(object.synopsis.value),
+            new AnimeImage(object.image.value),
+            new AnimeUrl(object.url.value)
         );
     }
-
+    
 }

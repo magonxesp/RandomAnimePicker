@@ -1,4 +1,6 @@
-export default class Anime {
+import AggregateRoot from "../../shared/domain/aggregate-root";
+
+export default class Anime extends AggregateRoot {
 
     /**
      * Anime constructor.
@@ -30,6 +32,8 @@ export default class Anime {
         image,
         url
     ) {
+        super();
+
         this.id = id;
         this.title = title;
         this.episodes = episodes;
@@ -42,6 +46,10 @@ export default class Anime {
         this.synopsis = synopsis;
         this.image = image;
         this.url = url;
+    }
+
+    getId() {
+        return this.id.value;
     }
 
 }

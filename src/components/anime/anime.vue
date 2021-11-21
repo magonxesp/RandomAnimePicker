@@ -21,6 +21,9 @@
   import JikanApiAnimeRepository from "../../modules/anime/infraestructure/jikan-api/jikan-api-anime-repository";
   import SessionStorageAnimeRepository from "../../modules/anime/infraestructure/session/session-storage-anime-repository";
   import Anime from "../../modules/anime/domain/anime";
+  import CreateHistoryEntry from "../../modules/history/application/create-history-entry";
+  import SessionStorageHistoryRepository from "../../modules/history/infraestructure/session-storage/session-storage-history-repository";
+  import SaveAnime from "../../modules/anime/application/save-anime";
 
   export default {
     props: {
@@ -58,20 +61,24 @@
       }
     },
     methods: {
-      findRandomAnime() {
+      async findRandomAnime() {
         const finder = new AnimeFinder(new JikanApiAnimeRepository());
         this.preload = true;
         this.error = false;
+        this.anime = null;
 
-        finder.random().then((anime) => {
-          this.randomAnime = anime;
+        try {
+          this.randomAnime = await finder.random();
           this.preload = false;
 
-          (new SessionStorageAnimeRepository()).save(anime);
-        })
-        .catch(() => {
+          await (new SaveAnime(new SessionStorageAnimeRepository())).save(this.randomAnime);
+          await (new CreateHistoryEntry(new SessionStorageHistoryRepository())).createEntry(this.randomAnime.id);
+
+          window.dispatchEvent(new Event('random-anime'));
+        } catch (e) {
+          console.log(e);
           this.error = true;
-        });
+        }
       }
     }
   }

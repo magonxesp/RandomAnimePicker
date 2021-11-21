@@ -2,19 +2,37 @@
   <div class="App">
     <header>
       <h1>Random Anime Picker</h1>
+      <div class="Header-menu">
+        <History v-on:click-history-entry="showAnime"></History>
+      </div>
     </header>
     <div class="App-container">
-      <Anime></Anime>
+      <Anime v-bind:anime="anime"></Anime>
     </div>
   </div>
 </template>
 
 <script>
   import Anime from "../anime/anime.vue";
+  import History from "../history/history.vue";
+  import AnimeFinder from "../../modules/anime/application/anime-finder";
+  import SessionStorageAnimeRepository from "../../modules/anime/infraestructure/session/session-storage-anime-repository";
 
   export default {
+    data() {
+      return {
+        anime: null
+      }
+    },
     components: {
-      Anime
+      Anime,
+      History
+    },
+    methods: {
+      showAnime(animeId) {
+        (new AnimeFinder(new SessionStorageAnimeRepository)).find(animeId)
+          .then(anime => this.anime = anime);
+      }
     }
   }
 </script>
@@ -26,7 +44,10 @@
     color: white;
 
     header {
-      padding: 15px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       h1 {
         margin: 0;

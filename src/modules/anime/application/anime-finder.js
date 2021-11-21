@@ -18,4 +18,15 @@ export default class AnimeFinder {
         return await this.repository.random();
     }
 
+    /**
+     * Get anime by id
+     *
+     * @param {AnimeId} id
+     *
+     * @returns {Promise<Anime>}
+     */
+    async find(id) {
+        return await this.repository.find(id);
+    }
+
 }
