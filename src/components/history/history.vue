@@ -67,9 +67,13 @@
       async openSidebar() {
         this.animes = await history();
         this.open = true;
+
+        document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
       },
       closeSidebar() {
         this.open = false;
+
+        document.getElementsByTagName('body')[0].style.overflowY = 'auto';
       },
       emitShowAnime(animeId) {
         console.log(animeId);
