@@ -1,12 +1,8 @@
 import AnimeRepository from "../../domain/anime-repository";
 import AnimeNotFoundException from "../../domain/exceptions/anime-not-found-exception";
 import Random from "../../../shared/domain/random";
-import {
-    sessionStorageGetAllObjects,
-    sessionStorageGetById,
-    sessionStoragePersistObject
-} from "../../../shared/infraestructure/persistence/session-storage";
 import AnimeObject from "./anime-object";
+import { sessionStorage } from "../../../shared/infraestructure/persistence/key-value-storage/key-value-storage";
 
 
 const ANIME_STORAGE = "anime_storage";
@@ -14,7 +10,7 @@ const ANIME_STORAGE = "anime_storage";
 export default class SessionStorageAnimeRepository extends AnimeRepository {
 
     async random() {
-        let items = await sessionStorageGetAllObjects(ANIME_STORAGE);
+        let items = await sessionStorage().getAllObjects(ANIME_STORAGE);
 
         if (items.length === 0) {
             throw new AnimeNotFoundException();
@@ -25,7 +21,7 @@ export default class SessionStorageAnimeRepository extends AnimeRepository {
     }
 
     async find(id) {
-        const anime = await sessionStorageGetById(ANIME_STORAGE, id.value);
+        const anime = await sessionStorage().getById(ANIME_STORAGE, id.value);
 
         if (!anime) {
             throw new AnimeNotFoundException();
@@ -35,7 +31,7 @@ export default class SessionStorageAnimeRepository extends AnimeRepository {
     }
 
     async save(anime) {
-        await sessionStoragePersistObject(ANIME_STORAGE, anime);
+        await sessionStorage().persistObject(ANIME_STORAGE, anime);
     }
 
 }

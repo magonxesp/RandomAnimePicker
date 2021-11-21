@@ -15,8 +15,7 @@
 <script>
   import Anime from "../anime/anime.vue";
   import History from "../history/history.vue";
-  import AnimeFinder from "../../modules/anime/application/anime-finder";
-  import SessionStorageAnimeRepository from "../../modules/anime/infraestructure/session/session-storage-anime-repository";
+  import { animeFinder } from "../../application-services";
 
   export default {
     data() {
@@ -30,7 +29,7 @@
     },
     methods: {
       showAnime(animeId) {
-        (new AnimeFinder(new SessionStorageAnimeRepository)).find(animeId)
+        animeFinder("session").find(animeId)
           .then(anime => this.anime = anime);
       }
     }
@@ -51,6 +50,10 @@
 
       h1 {
         margin: 0;
+      }
+
+      .Header-menu {
+        margin-left: 2em;
       }
     }
 

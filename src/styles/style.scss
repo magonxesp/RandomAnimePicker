@@ -25,6 +25,12 @@ body {
   overflow-x: hidden;
 }
 
+.no-scroll {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;

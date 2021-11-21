@@ -20,24 +20,18 @@
 </template>
 
 <script>
-  import CurrentHistory from "../../modules/history/application/current-history";
-  import SessionStorageHistoryRepository from "../../modules/history/infraestructure/session-storage/session-storage-history-repository";
-  import AnimeFinder from "../../modules/anime/application/anime-finder";
-  import SessionStorageAnimeRepository from "../../modules/anime/infraestructure/session/session-storage-anime-repository";
   import HistoryEntry from "./history-entry.vue";
   import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-  const currentHistory = new CurrentHistory(new SessionStorageHistoryRepository());
-  const animeFinder = new AnimeFinder(new SessionStorageAnimeRepository());
+  import { animeFinder, currentHistory } from "../../application-services";
 
   async function history() {
-    const history = await currentHistory.current();
+    const history = await currentHistory().current();
     const animes = [];
 
     if (history) {
       for (let id of history.animeIds.animeIds) {
         try {
-          animes.push(await animeFinder.find(id));
+          animes.push(await animeFinder("session").find(id));
         } catch (e) {
           console.log(e);
         }
@@ -45,6 +39,16 @@
     }
 
     return animes.reverse();
+  }
+
+  function toggleScroll(condition) {
+    if (!condition) {
+      document.querySelector('body').classList.add('no-scroll');
+      document.querySelector('html').classList.add('no-scroll');
+    } else {
+      document.querySelector('body').classList.remove('no-scroll');
+      document.querySelector('html').classList.remove('no-scroll');
+    }
   }
 
   export default {
@@ -68,15 +72,14 @@
         this.animes = await history();
         this.open = true;
 
-        document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
+        toggleScroll(false);
       },
       closeSidebar() {
         this.open = false;
 
-        document.getElementsByTagName('body')[0].style.overflowY = 'auto';
+        toggleScroll(true);
       },
       emitShowAnime(animeId) {
-        console.log(animeId);
         this.closeSidebar();
         this.$emit('click-history-entry', animeId);
       }
@@ -91,6 +94,7 @@
     &__icon {
       a {
         color: #FFFFFF;
+        font-size: 2em;
       }
     }
 

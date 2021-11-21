@@ -16,14 +16,9 @@
 <script>
   import AnimePreloader from "./preload/anime-preload.vue";
   import AnimeDetail from "./anime-detail.vue";
-  import AnimeFinder from "../../modules/anime/application/anime-finder";
   import AnimeError from "./error/anime-error.vue";
-  import JikanApiAnimeRepository from "../../modules/anime/infraestructure/jikan-api/jikan-api-anime-repository";
-  import SessionStorageAnimeRepository from "../../modules/anime/infraestructure/session/session-storage-anime-repository";
   import Anime from "../../modules/anime/domain/anime";
-  import CreateHistoryEntry from "../../modules/history/application/create-history-entry";
-  import SessionStorageHistoryRepository from "../../modules/history/infraestructure/session-storage/session-storage-history-repository";
-  import SaveAnime from "../../modules/anime/application/save-anime";
+  import { saveAnime, animeFinder, createHistoryEntry } from "../../application-services";
 
   export default {
     props: {
@@ -62,17 +57,16 @@
     },
     methods: {
       async findRandomAnime() {
-        const finder = new AnimeFinder(new JikanApiAnimeRepository());
         this.preload = true;
         this.error = false;
         this.anime = null;
 
         try {
-          this.randomAnime = await finder.random();
+          this.randomAnime = await animeFinder().random();
           this.preload = false;
 
-          await (new SaveAnime(new SessionStorageAnimeRepository())).save(this.randomAnime);
-          await (new CreateHistoryEntry(new SessionStorageHistoryRepository())).createEntry(this.randomAnime.id);
+          await saveAnime().save(this.randomAnime);
+          await createHistoryEntry().createEntry(this.randomAnime.id);
 
           window.dispatchEvent(new Event('random-anime'));
         } catch (e) {

@@ -38,10 +38,6 @@ export default {
     width: 100%;
     padding: 1em 2em 0 2em;
 
-    &:first-child {
-      padding: 0 2em 0 2em;
-    }
-
     &:hover {
       cursor: pointer;
       background-color: $background-primary;
