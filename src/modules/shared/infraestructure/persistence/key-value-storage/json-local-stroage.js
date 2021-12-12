@@ -1,6 +1,6 @@
-import KeyValueStorageInterface from "./key-value-storage-interface";
+import KeyValueStorage from "./key-value-storage";
 
-export default class JsonLocalStroage extends KeyValueStorageInterface {
+export default class JsonLocalStroage extends KeyValueStorage {
 
     async get(key) {
         const json = localStorage.getItem(key);

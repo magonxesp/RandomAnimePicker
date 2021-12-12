@@ -2,7 +2,7 @@ import AnimeRepository from "../../domain/anime-repository";
 import AnimeNotFoundException from "../../domain/exceptions/anime-not-found-exception";
 import Random from "../../../shared/domain/random";
 import AnimeObject from "./anime-object";
-import { sessionStorage } from "../../../shared/infraestructure/persistence/key-value-storage/key-value-storage";
+import { sessionStorage } from "../../../shared/infraestructure/persistence/key-value-storage/json-key-value-storage";
 
 
 const ANIME_STORAGE = "anime_storage";

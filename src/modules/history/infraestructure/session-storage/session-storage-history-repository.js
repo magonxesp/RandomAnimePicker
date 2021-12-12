@@ -1,6 +1,6 @@
 import HistoryRepository from "../../domain/history-repository";
 import HistoryObject from "./history-object";
-import { sessionStorage } from "../../../shared/infraestructure/persistence/key-value-storage/key-value-storage";
+import { sessionStorage } from "../../../shared/infraestructure/persistence/key-value-storage/json-key-value-storage";
 
 const HISTORY_STORAGE = "history_storage";
 

@@ -1,6 +1,6 @@
-import KeyValueStorageInterface from "./key-value-storage-interface";
+import KeyValueStorage from "./key-value-storage";
 
-export default class JsonSessionStroage extends KeyValueStorageInterface {
+export default class JsonSessionStroage extends KeyValueStorage {
 
     async get(key) {
         const json = sessionStorage.getItem(key);
