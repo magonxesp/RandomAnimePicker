@@ -23,13 +23,3 @@ export default defineNuxtConfig({
 	],
 	modules: ["@pinia/nuxt"]
 })
-
-/*    <meta property=”og:type” content=”website” />
-
-    <meta property=”og:title” content=”título de tu página o tu post” />
-
-    <meta property=”og:description” content=”descripción del contenido de la página” />
-
-    <meta property=”og:image” content=”enlace al archive de la imagen” />
-
-    <meta property=”og:url” content=”permalink” />*/
