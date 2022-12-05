@@ -13,7 +13,7 @@
         </a>
       </div>
       <div class="history__sidebar__entries">
-        <HistoryEntry v-for="entry in entries" :anime="entry" :key="entry.id.value" @click:entry="showEntry"></HistoryEntry>
+        <HistoryEntry v-for="entry in entries" :anime="entry" :key="entry.id.value" @click="closeSidebar" />
       </div>
     </div>
   </div>
@@ -67,10 +67,6 @@ export default defineComponent({
 			this.open = true
 			this.toggleScroll(false)
 			this.fetchEntries()
-		},
-		showEntry(animeid: string) {
-			this.store.fetchAnimeById(animeid)
-			this.closeSidebar()
 		}
 	},
 	watch: {

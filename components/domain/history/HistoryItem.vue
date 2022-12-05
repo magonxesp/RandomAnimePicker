@@ -1,5 +1,5 @@
 <template>
-  <div class="history-entry" @click="$emit('click:entry', anime.id.value)">
+  <div class="history-entry" @click="navigateTo(`/anime/${anime.id.value}`)">
     <div class="history-entry__content">
       <div class="history-entry__image">
         <img :src="anime.image.value" alt="history anime image" />
@@ -19,7 +19,6 @@ import { Anime } from "~/plugins/application-services/anime/domain/anime";
 import { PropType } from "@vue/runtime-core";
 
 export default defineComponent({
-	emits: ["click:entry"],
   props: {
     anime: {
       type: Object as PropType<Anime>,
