@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+		"start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxt/test-utils-edge": "^3.0.1-rc.0-27833302.52421a9",
