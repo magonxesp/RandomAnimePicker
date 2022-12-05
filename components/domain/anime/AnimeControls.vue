@@ -13,8 +13,6 @@ import { defineComponent } from "#imports";
 import { PropType } from "@vue/runtime-core";
 import { Anime } from "~/plugins/application-services/anime/domain/anime";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { useToast } from "vue-toastification";
-import toast from "~/plugins/toast";
 
 export default defineComponent({
 	name: "AnimeControls",
@@ -25,15 +23,10 @@ export default defineComponent({
 			required: true
 		}
 	},
-	setup() {
-		const toast = useToast()
-
-		return {
-			toast
-		}
-	},
 	methods: {
 		async share() {
+			const { useToast } = await import("vue-toastification")
+			const toast = useToast()
 			const url = `${window.location.protocol}//${window.location.host}/anime/${this.anime.id.value}`
 
 			if (typeof navigator.share !== "undefined") {
@@ -44,7 +37,7 @@ export default defineComponent({
 				})
 			} else {
 				await navigator.clipboard.writeText(url)
-				this.toast.success("Copied to clipboard!")
+				toast.success("Copied to clipboard!")
 			}
 		}
 	},
