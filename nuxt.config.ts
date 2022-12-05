@@ -22,5 +22,13 @@ export default defineNuxtConfig({
 		"@fortawesome/fontawesome-svg-core/styles.css",
 		"@/assets/styles/main.scss",
 	],
-	modules: ["@pinia/nuxt"]
+	modules: [
+		"@pinia/nuxt",
+	],
+	postcss: {
+		plugins: {
+			tailwindcss: {},
+			autoprefixer: {},
+		},
+	},
 })

@@ -2,9 +2,14 @@ import { AnimeRepository } from "~/plugins/application-services/anime/domain/ani
 import { Random } from "~/plugins/application-services/shared/domain/random";
 import { AnimeId } from "~/plugins/application-services/shared/domain/anime/anime-id";
 import { Anime } from "~/plugins/application-services/anime/domain/anime";
+import { AnimeNotFoundException } from "~/plugins/application-services/anime/domain/exception";
 import { Anime as JikanApiAnime } from "~/plugins/application-services/shared/infraestructure/jikan-api/anime";
 import { randomSeason } from "~/plugins/application-services/anime/domain/anime-season";
-import { ResponseCollection, ResponseItem } from "~/plugins/application-services/shared/infraestructure/jikan-api/response";
+import {
+	ResponseCollection,
+	ResponseError,
+	ResponseItem
+} from "~/plugins/application-services/shared/infraestructure/jikan-api/response";
 
 export class JikanApiAnimeRepository implements AnimeRepository {
 
@@ -40,6 +45,11 @@ export class JikanApiAnimeRepository implements AnimeRepository {
 
 	async find(id: AnimeId): Promise<Anime> {
 		const response: ResponseItem = await $fetch(`${JikanApiAnimeRepository.API_BASE_URL}/anime/${id.value}`);
+
+		if (response.status == 404) {
+			throw new AnimeNotFoundException(`Anime with id ${id.value} not found`)
+		}
+
 		return this.toAnimeAggregate(response.data);
 	}
 

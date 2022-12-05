@@ -4,7 +4,8 @@
       <img src="~/assets/images/oups.png" alt="error-thumbnail" />
     </div>
     <div class="error__message">
-      <h2>Oups! An error ocurred</h2>
+      <h2 class="text-9xl" v-if="statusCode">{{ statusCode }}</h2>
+      <h3>{{ message ?? "Oups! An error ocurred" }}</h3>
     </div>
   </div>
 </template>
@@ -13,7 +14,11 @@
 import { defineComponent } from "#imports";
 
 export default defineComponent({
-  name: "Error"
+  name: "Error",
+	props: {
+		statusCode: Number,
+		message: String
+	}
 })
 </script>
 
@@ -41,9 +46,12 @@ export default defineComponent({
   &__message {
     display: flex;
     align-items: center;
+		flex-direction: column;
+		justify-content: center;
 
     h2 {
       padding: 0 25px;
+			text-align: center;
 
       @media (max-width: 900px) {
         padding: 40px 0;

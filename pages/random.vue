@@ -20,9 +20,7 @@ export default defineComponent({
 		}
 	},
 	mounted() {
-		if (!this.currentAnime) {
-			this.store.fetchRandomAnime()
-		}
+		this.store.fetchRandomAnime()
 	},
 	components: {
 		AnimeView

@@ -1,12 +1,9 @@
 <template>
-  <div class="anime">
+  <AnimeWrapper>
 		<Loading v-if="isLoading" />
     <div v-if="currentAnime">
       <AnimeDetail :anime="currentAnime" />
-      <div class="buttons-container">
-        <button class="btn btn-primary" @click.prevent="fetch">Choose a random anime</button>
-        <a class="btn btn-secondary" :href="currentAnime.url.value" target="_blank">View on MyAnimeList</a>
-      </div>
+      <AnimeControls :anime="currentAnime" @click:random="fetch" />
     </div>
 		<div v-if="error">
 			<Error />
@@ -14,7 +11,7 @@
 				<button class="btn btn-primary" @click.prevent="fetch">Try again</button>
 			</div>
 		</div>
-  </div>
+	</AnimeWrapper>
 </template>
 
 <script lang="ts">
@@ -24,6 +21,8 @@ import { storeToRefs } from "pinia";
 import Error from "~/components/common/Error.vue";
 import Loading from "~/components/common/Loading.vue";
 import AnimeDetail from "~/components/domain/anime/AnimeDetail.vue";
+import AnimeControls from "~/components/domain/anime/AnimeControls.vue";
+import AnimeWrapper from "~/components/domain/anime/AnimeWrapper.vue";
 
 export default defineComponent({
 	name: "AnimeView",
@@ -44,39 +43,15 @@ export default defineComponent({
 		}
 	},
 	components: {
+		AnimeWrapper,
 		Loading,
 		Error,
-		AnimeDetail
+		AnimeDetail,
+		AnimeControls
 	},
 })
 </script>
 
 <style lang="scss" scoped>
-.anime {
-	margin-bottom: 20px;
 
-	.buttons-container {
-		display: flex;
-		justify-content: center;
-		padding: 10px 0;
-
-		.btn {
-			margin-left: 10px;
-
-			&:first-child {
-				margin-left: 0;
-			}
-		}
-
-		@media (max-width: 600px) {
-			flex-direction: column;
-			margin: 0 10px 10px 10px;
-
-			.btn {
-				margin-left: 0 !important;
-				margin-bottom: 15px;
-			}
-		}
-	}
-}
 </style>
