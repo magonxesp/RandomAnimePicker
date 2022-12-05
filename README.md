@@ -4,21 +4,30 @@ Pick a random anime from MyAnimeList using jikan api
 
 ## Dependencies
 
-* Node >= 12
+* Node >= 18
+* Yarn
 
 Install dependencies
 ```sh
-$ npm install
+$ yarn install
 ```
 
 ## Build
 
 Build on development mode
 ```sh
-$ npm run build
+$ yarn dev
 ```
 
 Build on production mode
+
+* SSR (Server side rendering)
+
 ```sh
-$ npm run build:prod
+$ yarn build
+```
+* SSG (Static site generation)
+
+```sh
+$ yarn generate
 ```
