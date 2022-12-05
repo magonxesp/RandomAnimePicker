@@ -66,6 +66,15 @@ export default defineComponent({
 		&:first-child {
 			margin-left: 0;
 		}
+
+		@media (max-width: 900px) {
+			margin-left: 0;
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	@media (max-width: 900px) {
+		flex-direction: column;
 	}
 }
 </style>

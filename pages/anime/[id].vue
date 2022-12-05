@@ -11,7 +11,7 @@ import AnimeWrapper from "~/components/domain/anime/AnimeWrapper.vue";
 import AnimeDetail from "~/components/domain/anime/AnimeDetail.vue";
 import AnimeControls from "~/components/domain/anime/AnimeControls.vue";
 import { Anime } from "~/plugins/application-services/anime/domain/anime";
-import {AnimeNotFoundException} from "~/plugins/application-services/anime/domain/exception";
+import { AnimeNotFoundException } from "~/plugins/application-services/anime/domain/exception";
 
 export default defineComponent({
 	name: "[id]",
