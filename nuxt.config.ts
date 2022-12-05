@@ -10,10 +10,11 @@ export default defineNuxtConfig({
 				{ property: "og:type", content: "website" },
 				{ property: "og:title", content: "Random Anime Picker" },
 				{ property: "og:description", content: "Pick a random anime and add to your list on myanimelist.net" },
-				{ property: "og:image", content: "/meta-image.png" },
+				{ property: "og:image", content: "/images/meta-image.png" },
 			],
 			link: [
-				{ rel: "icon", href: "/favicon.png" }
+				{ rel: "icon", href: "/icon/favicon.png" },
+				{ rel: "apple-touch-icon", href: "/icon/icon-180x180.png" }
 			]
 		},
 	},
