@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+	runtimeConfig: {
+
+	},
 	app: {
 		head: {
 			title: "Random Anime Picker",
@@ -11,6 +14,7 @@ export default defineNuxtConfig({
 				{ property: "og:title", content: "Random Anime Picker" },
 				{ property: "og:description", content: "Pick a random anime and add to your list on myanimelist.net" },
 				{ property: "og:image", content: "/images/meta-image.png" },
+				{ name: "google-site-verification", content: process.env.NUXT_GOOGLE_SITE_VERIFICATION },
 			],
 			link: [
 				{ rel: "icon", href: "/icon/favicon.png" },
